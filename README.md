@@ -1,7 +1,7 @@
 # ✈️ Airline Ticket Chatbot  
 
 ## 📌 Project Overview  
-This project implements a **conversational chatbot** capable of offering **airline tickets for a travel agency**.  
+This project implements a conversational chatbot powered by Gemini/LLM, vector search (RAG) with Qdrant to answer questions, MCP integration for flight search, and an administration interface to manage the knowledge base and statistics to analyze usage..  
 (July 2025).  
 
 The chatbot leverages **Large Language Models (LLMs)** and integrates with **Meta’s WhatsApp Business API** to enable natural and interactive communication with users.  
@@ -11,7 +11,8 @@ The chatbot leverages **Large Language Models (LLMs)** and integrates with **Met
 ## 🚀 Features  
 - 🗣️ **Conversational AI**: Handles natural language queries from users.  
 - 👥 **Dynamic Context Updates**: Remembers user-provided details (e.g., passengers, dates, destinations) and updates them without restarting the whole search.  
-- 📅 **Flight Search**: Retrieves and proposes flight options based on user preferences.  
+- 📅 **Flight Search**: Retrieves and proposes flight options based on user preferences.
+- 📋 **General Informations** : Provide a general overview about the concerned company.
 - 🔄 **Webhook Integration**: Connected to Meta Developers for real-time message exchange.  
 - 🧪 **User Testing Framework**: Designed with a focus on human–AI interaction for better usability.  
 
@@ -20,7 +21,7 @@ The chatbot leverages **Large Language Models (LLMs)** and integrates with **Met
 ## 🛠️ Tech Stack  
 - **Language Models**: LLMs for natural language understanding.  
 - **Backend**: Python (Flask/FastAPI).  
-- **Database**: SQLite / PostgreSQL for user session management.  
+- **Database**: Mongodb/qdrant for user and document session management.  
 - **API Integration**: Meta WhatsApp Business API for communication.  
 - **Deployment**: Docker & Ngrok for testing, cloud deployment planned.  
 
@@ -30,8 +31,8 @@ The chatbot leverages **Large Language Models (LLMs)** and integrates with **Met
 
 1. **Clone the repository**  
 ```bash
-git clone https://github.com/NgoufoKevine/Chat_bot_AI.git
-cd Chat_bot_AI 
+git clone https://github.com/2003Grace/AI_Chat_bot .git
+cd AI_Chat_bot 
 ```
 
 2. **Set up a virtual environment**  
@@ -49,22 +50,52 @@ pip install -r requirements.txt
 4. **Configure environment variables**  
 Create a `.env` file and set your credentials:  
 ```
-META_ACCESS_TOKEN=your_token_here
-VERIFY_TOKEN=your_webhook_verify_token
-APP_SECRET=your_app_secret
+WHATSAPP_VERIFY_TOKEN=your verify token
+WHATSAPP_ACCESS_TOKEN=your access token
+PHONE_NUMBER_ID=your phone number ID
+
+
+API_BASE_URL = The API for the company. #you can remplace it depending on what you want.
+
+GEMINI_API_KEY=your Gemini API key 
+
+GEMINI_MODEL="gemini-2.5-flash" #you can change depending on which model you want to use
+
+
+
+DB_connect = "mongodb+srv://kevine:24446666688888888@mydata.kn4ksk4.mongodb.net/?retryWrites=true&w=majority&appName=mydata"
+
+ADMIN_USERNAME= My AUTH Admin name. #change to your own
+ADMIN_PASSWORD= My AUTH Admin password. #change to your own
+QDRANT_USE_SERVER=true
+
+
+ADMIN_ALLOWED_ORIGINS= Cors Config
+
+QDRANT_URL=Server link of the qdrant db
+
+MAX_PDF_SIZE = 15728640  # 15 MB
+
+API_PORT=8001
 ```
 
 5. **Run the server**  
 ```bash
 python server.py
 ```
-
+```bash
+python whatsapp_travel_bot_test.py
+```
+```bash
+python kb_admin_api.py
+```
 ---
 
 ## 📡 Webhook Setup  
 - Create a **Meta Developer App** and configure **Webhook URL + Verify Token**.  
 - Subscribe to the **messages** endpoint.  
 - Replace temporary tokens with a **permanent access token** generated via **system user**.  
+
 
 ---
 
@@ -74,13 +105,6 @@ Supervisor requested: **(open for collaboration/mentorship, especially on LLMs &
 
 ---
 
-## 📌 Future Work  
-- 🔍 Integration with live airline APIs (Amadeus, Skyscanner).  
-- 🧠 Fine-tuning of LLM for travel-specific intents.  
-- 🌍 Multi-language support (English, French).  
-- 📊 Evaluation with real user interactions.  
-
----
 
 ## 👨‍💻 Author  
 **Kevine Grace**  
