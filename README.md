@@ -47,6 +47,14 @@ venv\Scripts\activate     # On Windows
 pip install -r requirements.txt
 ```
 
+  **Install Ollama**  
+ Go on https://ollama.com/download/ , Choose your environment and install
+
+    **pull the model**
+```bash
+ollama pull bge-m3
+```
+
 4. **Configure environment variables**  
 Create a `.env` file and set your credentials:  
 ```
