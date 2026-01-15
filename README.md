@@ -54,6 +54,9 @@ pip install -r requirements.txt
 ```bash
 ollama pull bge-m3
 ```
+**Install Qdrant**
+
+Setup your qdrant env on your Computer. Go on https://qdrant.tech/documentation/quickstart/
 
 4. **Configure environment variables**  
 Create a `.env` file and set your credentials:  
@@ -87,6 +90,11 @@ MAX_PDF_SIZE = 15728640  # 15 MB
 API_PORT=8001
 ```
 
+## 📡 Webhook Setup  
+- Create a **Meta Developer App** and configure **Webhook URL + Verify Token**.  
+- Subscribe to the **messages** endpoint.  
+- Replace temporary tokens with a **permanent access token** generated via **system user**.
+
 5. **Run the server**  
 ```bash
 python server.py
@@ -97,15 +105,6 @@ python whatsapp_travel_bot_test.py
 ```bash
 python kb_admin_api.py
 ```
----
-
-## 📡 Webhook Setup  
-- Create a **Meta Developer App** and configure **Webhook URL + Verify Token**.  
-- Subscribe to the **messages** endpoint.  
-- Replace temporary tokens with a **permanent access token** generated via **system user**.  
-
-
----
 
 ## 📅 Context  
 This project is part of my professional internship (July–December 2025).  
